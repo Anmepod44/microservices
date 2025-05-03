@@ -14,17 +14,53 @@ CART = ["101", "102"]
 
 @app.route("/", methods=["GET"])
 def landing_page():
-    return jsonify({
-        "message": "Welcome to the Product + Cart Service!",
-        "endpoints": {
-            "GET /products": "List all products",
-            "GET /products/<product_id>": "Get details of a product",
-            "GET /cart": "View cart with product details",
-            "POST /cart": "Add product ID to cart",
-            "DELETE /cart/<product_id>": "Remove product ID from cart",
-            "DELETE /cart": "Clear all items from the cart"
-        }
-    })
+    return """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Product + Cart Service</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background: #f0f0f0;
+                padding: 40px;
+                text-align: center;
+            }
+            h1 {
+                color: #2c3e50;
+            }
+            .endpoints {
+                margin-top: 20px;
+                background: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                display: inline-block;
+                text-align: left;
+            }
+            .endpoints code {
+                background: #ecf0f1;
+                padding: 2px 5px;
+                border-radius: 3px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>🚀 Welcome to the Product + Cart Service!</h1>
+        <div class="endpoints">
+            <h3>Available Endpoints:</h3>
+            <ul>
+                <li><code>GET /products</code>: List all products</li>
+                <li><code>GET /products/&lt;product_id&gt;</code>: Get details of a product</li>
+                <li><code>GET /cart</code>: View cart with product details</li>
+                <li><code>POST /cart</code>: Add product ID to cart</li>
+                <li><code>DELETE /cart/&lt;product_id&gt;</code>: Remove product ID from cart</li>
+                <li><code>DELETE /cart</code>: Clear all items from the cart</li>
+            </ul>
+        </div>
+    </body>
+    </html>
+    """
+
 
 @app.route("/products", methods=["GET"])
 def list_products():
