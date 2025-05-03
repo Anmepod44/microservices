@@ -62,3 +62,6 @@ def remove_from_cart(product_id):
         return jsonify({"message": f"Product {product_id} removed from cart", "cart": CART})
     else:
         return jsonify({"error": "Product not in cart"}), 404
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
